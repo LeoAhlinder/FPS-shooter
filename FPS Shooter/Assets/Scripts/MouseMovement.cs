@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MouseMovement : MonoBehaviour
 {
-    public float Sens = 100f;
+    public float Sens = 150f;
     public Transform playerBody;
     float xRotation;
     private void Start()

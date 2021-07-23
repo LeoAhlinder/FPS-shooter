@@ -6,6 +6,6 @@ public class MenuButtons : MonoBehaviour
 {
     public void Continue()
     {
-        
+        Debug.Log("321");
     }  
 }
