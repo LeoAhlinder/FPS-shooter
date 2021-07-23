@@ -7,8 +7,9 @@ public class playerAction : MonoBehaviour
     enemyHealth enemiesHealth;
     public float gunDamage = 1f;
     Weapon weapon;
-    float TimeBetweenShots = 0.7f;
+    float TimeBetweenShots = 0.3f;
     bool canFire = true;
+    public AudioSource pistol1Shoot;
     private void Awake()
     {
         weapon = GameObject.Find("WeaponScript").GetComponent<Weapon>();
@@ -19,7 +20,7 @@ public class playerAction : MonoBehaviour
 
         if (weapon.pistol1)
         {
-            TimeBetweenShots = 0.7f;
+            TimeBetweenShots = 0.3f;
         }
         else if (weapon.Rifle2)
         {
@@ -32,6 +33,7 @@ public class playerAction : MonoBehaviour
         {
             if (hit.collider.CompareTag("Enemy") && Input.GetMouseButtonDown(0) && canFire) //Shoots
             {
+                if (weapon.pistol1) { pistol1Shoot.Play(); }
                 Debug.Log("Shooting");
                 StartCoroutine(Shot());
                 IEnumerator Shot()
