@@ -5,7 +5,6 @@ using UnityEngine;
 public class playerAction : MonoBehaviour
 {
     enemyHealth enemiesHealth;
-    private float gunEquipped = 0f;//varje siffra är för olika vapen 0 är för inget vapen.
     public float gunDamage = 1f;
     private void Awake()
     {
@@ -17,9 +16,8 @@ public class playerAction : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray,out hit))
         {
-            if (hit.collider.CompareTag("Enemy") && Input.GetMouseButtonDown(0) && gunEquipped == 0)
+            if (hit.collider.CompareTag("Enemy") && Input.GetMouseButtonDown(0)) //Shoots
             {
-                Debug.Log("Shooting");
                 enemyHealth health = hit.collider.GetComponent<enemyHealth>();
                 if (health != null)
                 {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class enemyHealth : MonoBehaviour
 {
     public float health = 3f;
+    public float EnemiesKilled = 0;
     // Update is called once per frame
 
     public void Damage(float damageAmount)
@@ -13,6 +14,7 @@ public class enemyHealth : MonoBehaviour
 
         if (health <= 0)
         {
+            EnemiesKilled++;
             Destroy(gameObject);
         }
     }
