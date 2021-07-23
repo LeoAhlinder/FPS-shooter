@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {       
-    bool Rifle2 = false;
-    bool pistol1 = true;
+    public bool Rifle2 = false;
+    public bool pistol1 = true;
 
     public GameObject Pistol1GO;
     public GameObject Rifle2GO;
