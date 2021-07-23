@@ -17,7 +17,6 @@ public class playerAction : MonoBehaviour
     }
     void Update()
     {
-
         if (weapon.pistol1)
         {
             TimeBetweenShots = 0.3f;
