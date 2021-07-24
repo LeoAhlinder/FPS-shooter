@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (!isGrounded)
         {
-            speed = 6f;
+            speed = 10f;
         }
 
         if (Input.GetButtonDown("Jump") && isGrounded)

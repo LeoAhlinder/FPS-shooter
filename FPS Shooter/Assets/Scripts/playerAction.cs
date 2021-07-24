@@ -9,7 +9,7 @@ public class playerAction : MonoBehaviour
     Weapon weapon;
     float TimeBetweenShots = 0.3f;
     bool canFire = true;
-    float MagSize = 18f;
+    public float MagSize = 1f;
 
     public AudioSource pistol1Shoot;
     public AudioSource pistol1Reload;
@@ -22,14 +22,18 @@ public class playerAction : MonoBehaviour
     {
         IEnumerator Reload()
         {
+            Debug.Log("321");
             if (weapon.pistol1)
             {
                 yield return new WaitForSeconds(3f);
                 MagSize = 18f;
+                canFire = true;
             }
         }
         IEnumerator Shot()
         {
+            Debug.Log("shot");
+            MagSize--;
             canFire = false;
             yield return new WaitForSeconds(TimeBetweenShots);
             canFire = true;
@@ -38,9 +42,11 @@ public class playerAction : MonoBehaviour
         if (weapon.pistol1)
         {
             TimeBetweenShots = 0.3f;
+            gunDamage = 1f;
         }
         else if (weapon.Rifle2)
         {
+            gunDamage = 2f;
             TimeBetweenShots = 0.2f;
         }
         
@@ -48,7 +54,7 @@ public class playerAction : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray,out hit))
         {
-            if (hit.collider.CompareTag("Enemy") && Input.GetMouseButtonDown(0) && canFire && MagSize > 0) //Shoots
+            if (Input.GetMouseButtonDown(0) && canFire && MagSize > 0) //Shoots
             {
                 if (weapon.pistol1) { pistol1Shoot.Play(); }
                 StartCoroutine(Shot());             
@@ -58,18 +64,11 @@ public class playerAction : MonoBehaviour
                     health.Damage(gunDamage);
                 }
             }
-            else if (Input.GetMouseButtonDown(0) && canFire)
-            {
-                if (weapon.pistol1)
-                {
-                    TimeBetweenShots = 0.3f;
-                    pistol1Shoot.Play();
-                }
-                StartCoroutine(Shot());
-            }
-            else if (MagSize <= 0)
+            if (MagSize <= 0 && Input.GetKeyDown(KeyCode.R))
             {
                 if (weapon.pistol1) { pistol1Reload.Play(); }
+                //Debug.Log("3");
+                canFire = false;
                 StartCoroutine(Reload());
             }
         }
