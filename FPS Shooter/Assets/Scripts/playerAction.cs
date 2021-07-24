@@ -13,6 +13,8 @@ public class playerAction : MonoBehaviour
 
     public AudioSource pistol1Shoot;
     public AudioSource pistol1Reload;
+    public AudioSource akReloadSound;
+    public AudioSource akShootSound;
     private void Awake()
     {
         weapon = GameObject.Find("WeaponScript").GetComponent<Weapon>();
@@ -27,6 +29,12 @@ public class playerAction : MonoBehaviour
             {
                 yield return new WaitForSeconds(3f);
                 MagSize = 18f;
+                canFire = true;
+            }
+            if (weapon.akGO)
+            {
+                yield return new WaitForSeconds(4f);
+                MagSize = 30f;
                 canFire = true;
             }
         }
@@ -67,7 +75,6 @@ public class playerAction : MonoBehaviour
             if (MagSize <= 0 && Input.GetKeyDown(KeyCode.R))
             {
                 if (weapon.pistol1) { pistol1Reload.Play(); }
-                //Debug.Log("3");
                 canFire = false;
                 StartCoroutine(Reload());
             }

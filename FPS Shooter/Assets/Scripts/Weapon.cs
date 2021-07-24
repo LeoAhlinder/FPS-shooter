@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour
     public bool pistol1 = true;
 
     public GameObject Pistol1GO;
-    public GameObject Rifle2GO;
+    public GameObject akGO;
     void Update()
     {
        if (pistol1)
@@ -21,13 +21,11 @@ public class Weapon : MonoBehaviour
        }
        if (Rifle2)
        {
-            Rifle2GO.SetActive(true);
+            akGO.SetActive(true);
        }
        else
        {
-            Rifle2GO.SetActive(false);
+            akGO.SetActive(false);
        }
-
-
     }
 }
