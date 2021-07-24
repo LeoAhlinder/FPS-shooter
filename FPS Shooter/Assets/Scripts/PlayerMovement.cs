@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     bool isGrounded;
     float jumpHeight = 2f;
+    bool IsRunning;
 
 
     // Update is called once per frame
@@ -19,12 +20,21 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, 0.4f, groundMask);
 
-        if (isGrounded && velocity.y < 0)
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = 12f;
+            IsRunning = true;
+        }
+        else
+        {
+            IsRunning = false;
+        }
+        if (isGrounded && velocity.y < 0 && !IsRunning)
         {
             speed = 8f;
             velocity.y = -2f;
         }
-        else
+        if (!isGrounded)
         {
             speed = 6f;
         }
