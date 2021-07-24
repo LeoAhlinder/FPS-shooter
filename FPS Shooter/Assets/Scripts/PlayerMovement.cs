@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController CC;
-    public float speed = 4f;
+    public float speed = 11f;
     public LayerMask groundMask;
     float gravity = -18f;
     Vector2 velocity;
@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            speed = 12f;
+            speed = 14f;
             IsRunning = true;
         }
         else
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (isGrounded && velocity.y < 0 && !IsRunning)
         {
-            speed = 8f;
+            speed = 11f;
             velocity.y = -2f;
         }
         if (!isGrounded)

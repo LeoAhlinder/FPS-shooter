@@ -9,7 +9,7 @@ public class playerAction : MonoBehaviour
     Weapon weapon;
     float TimeBetweenShots = 0.3f;
     bool canFire = true;
-    public float MagSize = 1f;
+    float MagSize = 18f;
 
     public AudioSource pistol1Shoot;
     public AudioSource pistol1Reload;
