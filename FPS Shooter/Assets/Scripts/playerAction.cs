@@ -46,7 +46,6 @@ public class playerAction : MonoBehaviour
             yield return new WaitForSeconds(TimeBetweenShots);
             canFire = true;
         }
-
         if (weapon.pistol1)
         {
             TimeBetweenShots = 0.3f;
@@ -65,6 +64,17 @@ public class playerAction : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && canFire && MagSize > 0) //Shoots
             {
                 if (weapon.pistol1) { pistol1Shoot.Play(); }
+                if (weapon.Rifle2)
+                {
+                    if (Input.GetMouseButton(0))
+                    {
+                        akShootSound.Play();
+                    }
+                    else
+                    {
+                        akShootSound.Stop();
+                    }
+                }
                 StartCoroutine(Shot());             
                 enemyHealth health = hit.collider.GetComponent<enemyHealth>();
                 if (health != null)
